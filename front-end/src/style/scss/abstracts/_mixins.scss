@@ -1,0 +1,15 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+@mixin col-function($num1, $num2) {
+  width: calc(#{$num1} * ((100% - (#{$num2} - 1) * #{$grid-horizontal}) / #{$num2}) + (#{$num1} - 1) * #{$grid-horizontal});
+}
+
+@mixin col-function-small-space($num1, $num2) {
+  width: calc(#{$num1} * ((100% - (#{$num2} - 1) * #{$grid-horizontal-small}) / #{$num2}) + (#{$num1} - 1) * #{$grid-horizontal-small});
+}

@@ -1,0 +1,26 @@
+.article {
+  margin-bottom: 3rem;
+
+  &__header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items:last baseline;
+    background-color: antiquewhite;
+    border-radius: 5px;
+
+    & h3 {
+      font-size: 3rem;
+    }
+
+    & .author{
+      font-size: 2rem;
+    }
+  }
+
+  &__body {
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}

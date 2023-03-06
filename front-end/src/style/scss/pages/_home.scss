@@ -1,0 +1,20 @@
+.section {
+  &-homePage {
+    padding: 4rem 2rem;
+  }
+
+  &-authenticate {
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &-postArticle {
+    padding: 4rem 2rem;
+  }
+
+  &-createArticle {
+    padding: 4rem 2rem;
+    background-image: linear-gradient(to right buttom, $color-blue-dark, $color_primary_dark);
+  }
+}

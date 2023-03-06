@@ -1,0 +1,30 @@
+header {
+  height: 6rem;
+  padding: 0 3rem;
+  background-image: linear-gradient(to right, $color_primary_light, $color_primary_dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & a {
+    text-decoration: none;
+  }
+
+  & .website-name {
+    color: $color-blue-dark;
+    font-size: 1.3rem;
+  }
+}
+
+nav {
+  display: flex;
+  
+  & .nav__item {
+    margin-left: 2rem;
+    
+    & h2 {
+      color: $color-blue-dark;
+      font-size: 2rem;
+    }
+  }
+}

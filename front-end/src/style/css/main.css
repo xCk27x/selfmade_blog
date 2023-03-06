@@ -1,0 +1,224 @@
+*, *::after, *::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.homePage__header {
+  margin-bottom: 4rem;
+  border-radius: 4px;
+  padding: 1rem;
+  background-color: #a0afb4;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.1);
+}
+.homePage__header h2 {
+  font-size: 3rem;
+}
+.homePage__body {
+  border-radius: 4px;
+  padding: 1rem;
+  background-color: #e4e4e4;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.1);
+}
+.homePage__body p {
+  line-height: 3rem;
+  font-size: 1.6rem;
+}
+
+.createArticle {
+  width: 100%;
+  padding: 2rem;
+  background-color: #e0e7ee;
+}
+.createArticle__header input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  font-size: 2.6rem;
+  border-width: 0;
+}
+.createArticle__body {
+  margin-top: 2rem;
+  position: relative;
+}
+.createArticle__body textarea {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  border-radius: 3px;
+  font-size: 1.8rem;
+  border-width: 0;
+  resize: none;
+}
+.createArticle__body button {
+  position: absolute;
+  top: 90vh;
+  right: 4%;
+  width: 10rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.1);
+  border: 2px solid #777;
+}
+
+.comment-container {
+  margin: 0 1rem;
+  padding: 1rem;
+  background-color: beige;
+  border-radius: 4px;
+}
+.comment-container .comment__header {
+  font-size: 1.7rem;
+}
+.comment-container .comment__body {
+  position: relative;
+  margin-top: 1rem;
+}
+.comment-container .comment__body--input {
+  width: 100%;
+  height: 10rem;
+  padding: 0.7rem;
+  outline-style: none;
+  border: 0px;
+  resize: none;
+}
+.comment-container .comment__body--button {
+  position: absolute;
+  top: 7.1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.sign-in {
+  width: 40vw;
+  background-color: #9dbd93;
+  font-size: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+}
+.sign-in h2 {
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+}
+.sign-in .input-container {
+  padding: 3rem;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+}
+.sign-in .input-container input {
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+.sign-in button {
+  margin-top: 1rem;
+  padding: 0.3rem 2rem;
+}
+
+.sign-up {
+  width: 40vw;
+  background-color: #9dbd93;
+  font-size: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+}
+.sign-up h2 {
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+}
+.sign-up .input-container {
+  padding: 3rem;
+  text-align: left;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 2px;
+}
+.sign-up .input-container input {
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+.sign-up button {
+  margin-top: 1rem;
+  padding: 0.3rem 2rem;
+}
+
+.article {
+  margin-bottom: 3rem;
+}
+.article__header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+  background-color: antiquewhite;
+  border-radius: 5px;
+}
+.article__header h3 {
+  font-size: 3rem;
+}
+.article__header .author {
+  font-size: 2rem;
+}
+.article__body {
+  padding: 1.5rem 0;
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+header {
+  height: 6rem;
+  padding: 0 3rem;
+  background-image: linear-gradient(to right, #71d56f, #28b485);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header a {
+  text-decoration: none;
+}
+header .website-name {
+  color: #242f76;
+  font-size: 1.3rem;
+}
+
+nav {
+  display: flex;
+}
+nav .nav__item {
+  margin-left: 2rem;
+}
+nav .nav__item h2 {
+  color: #242f76;
+  font-size: 2rem;
+}
+
+.section-homePage {
+  padding: 4rem 2rem;
+}
+.section-authenticate {
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: space-around;
+}
+.section-postArticle {
+  padding: 4rem 2rem;
+}
+.section-createArticle {
+  padding: 4rem 2rem;
+  background-image: linear-gradient(to right buttom, #242f76, #28b485);
+}
