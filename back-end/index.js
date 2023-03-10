@@ -1,19 +1,40 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 const morgan = require('morgan');
-const bcrypt = require('bcrypt');
+const cors = require('cors');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const expressJwt = require('express-jwt');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// parse application/json requests
+// using middleware
+app.use(session(
+  {
+    secret: 'session-secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 3600 * 1000 },
+  }
+));
+
+app.use(express.static(path.join(__dirname, 'static')));
+
+app.use(cookieParser());
+
+app.use(cors());
+
+app.use(expressJwt.expressjwt({
+  secret: "ncufresh-secret",
+  algorithms: ['HS256']
+}).unless({
+  path: ["/api/user/register", "/api/user/login"],
+}));
+
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
-
-// initialize database connection
-const db = new sqlite3.Database('./ncufresh-homework.db');
 
 //  引入Router
 const userRouter = require('./routes/userRoute');

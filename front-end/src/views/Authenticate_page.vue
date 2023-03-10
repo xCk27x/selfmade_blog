@@ -6,9 +6,8 @@
 </template>
 
 <script>
-import signIn from "@/components/SignIn.vue";
-import SignUp from "@/components/SignUp.vue";
-import axios from "axios";
+import signIn from "@/components/SignIn.component.vue";
+import SignUp from "@/components/SignUp.component.vue";
 
 export default {
   name: "authentication-page",
@@ -16,5 +15,5 @@ export default {
     "signIn-page": signIn,
     "signUp-page": SignUp,
   },
-}
+};
 </script>

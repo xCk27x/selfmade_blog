@@ -4,34 +4,33 @@ const db = new sqlite3.Database('./ncufresh-homework.db');
 
 exports.createPost = (req, res) => {
   const { title, content } = req.body;
-  const token = req.headers.authorization;
 
-  db.get('SELECT id FROM USERS WHERE token = ?', [token], (err, row) => {
+  const decoded = req.jwtDecoded;
+
+  const author_id = decoded.id;
+  const author_name = decoded.username;
+  db.run('INSERT INTO POSTS (title, content, author_id) VALUES (?, ?, ?)', [title, content, author_id], err => {
     if (err) {
-      res.status(500).send('Internal server error');
+      res.status(500).send('Internal server error2');
       return;
     }
 
-    if (!row) {
-      res.status(401).send('Invalid token');
-      return;
-    }
-
-    const author_id = row.id;
-    db.run('INSERT INTO POSTS (title, content, author_id) VALUES (?, ?, ?)', [title, content, author_id], err => {
-      if (err) {
-        res.status(500).send('Internal server error');
-        return;
+    res.status(200).json({
+      status: 'success',
+      message: 'Post created successfully',
+      post: {
+        authorName: author_name,
+        title,
+        content,
       }
-
-      res.json({ message: 'Post created successfully' });
     });
   });
-};
+}
+
 
 exports.getAllPosts = (req, res) => {
   // 根據 id 由大到小排序，從 POSTS 資料表中取出所有文章
-  db.all('SELECT * FROM POSTS ORDER BY id', [], (err, rows) => { 
+  db.all('SELECT * FROM POSTS ORDER BY id', [], (err, rows) => {
     if (err) {
       res.status(500).send('Internal server error');
       return;
@@ -48,14 +47,14 @@ exports.getAllPosts = (req, res) => {
     });
 
     // 將包含所有文章的陣列，轉換成 JSON 格式後回傳
-    res.json(posts); 
+    res.status(200).json(posts);
   });
 };
 
 exports.getOneUserPosts = (req, res) => {
   const token = req.headers.authorization;
 
-  const {userId} = req.params;
+  const { userId } = req.params;
 
   // 先確認傳入的 token 是否合法
   db.get('SELECT id FROM USERS WHERE id = ?', [userId], (err, row) => {

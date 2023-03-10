@@ -1,0 +1,52 @@
+.profile {
+  width: 100%;
+  
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0;
+    margin: 0 6rem;
+    border-bottom: 1px solid $color-black;
+
+    &__username {
+      font-size: 3rem;
+    }
+    & button {
+      padding: 0;
+      height: 4rem;
+      width: 4rem;
+      clip-path: circle(50%);
+      border: 0 solid;
+
+      & img {
+        width: 4rem;
+      }
+    }
+  }
+
+  &-body {
+    padding: 4rem 0;
+    margin: 0 6rem;
+
+    & .option-box {
+      padding: 2rem .5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 2rem;
+
+      & a {
+        color: #00bfff;
+        text-decoration: none;
+      }
+
+      &__title {
+        padding: 1rem 0;
+        font-weight: bold;
+      }
+
+      &__content  {
+        text-decoration: none;
+      }
+    }
+  }
+}

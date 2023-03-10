@@ -1,9 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/components/Home.vue";
-import Authenticate from "@/views/Authenticate.vue";
-import PostArticle from "@/views/PostArticle.vue";
-import CreateArticle from "@/views/CreateArticle.vue";
 
+// 引用pages
+import Home from "@/views/Home_page.vue";
+import Authenticate from "@/views/Authenticate_page.vue";
+import Create from "@/views/Create_page.vue";
+import Show from "@/views/Show_page.vue";
+import Setting from "@/views/Setting_page.vue";
+import UserProfile from "@/components/SettingUserProfile.component.vue";
+import UserPosts from "@/components/SettingUserPosts.component.vue";
+import ChangeName from "@/components/ChangeName.component.vue";
+import ChangeEmail from "@/components/ChangeEmail.component.vue";
+import ChangePassword from "@/components/ChangePassword.component.vue";
+
+
+// 定義路由
 const routes = [
   {
     path: "/",
@@ -12,18 +22,52 @@ const routes = [
   },
   {
     path: "/authenticate",
-    name: "Authenticate",
+    name: "AuthenticatePage",
     component: Authenticate,
   },
   {
-    path: "/article",
-    name: "PostArticle",
-    component: PostArticle,
+    path: "/show",
+    name: "showPost",
+    component: Show,
   },
   {
     path: "/create",
-    name: "CreateArticle",
-    component: CreateArticle,
+    name: "createPost",
+    component: Create,
+  },
+  {
+    path: "/setting",
+    name: "setting",
+    component: Setting,
+    children: [
+      {
+        path: "profile",
+        name: "profile",
+        component: UserProfile,
+        children: [
+          {
+            path: "changeName",
+            name: "changeName",
+            component: ChangeName,
+          },
+          {
+            path: "changeEmail",
+            name: "changeEmail",
+            component: ChangeEmail,
+          },
+          {
+            path: "changePassword",
+            name: "changePassword",
+            component: ChangePassword,
+          },
+        ],
+      },
+      {
+        path: "posts",
+        name: "posts",
+        component: UserPosts,
+      },
+    ],
   },
 ];
 

@@ -3,12 +3,14 @@
 
 @import './base/base';
 
-@import './components/homePage';
+@import './components/article';
 @import './components/create';
 @import './components/commentBox';
+@import './components/homePage';
+@import './components/profile';
+@import './components/setting';
 @import './components/signIn';
 @import './components/signUp';
-@import './components/article';
 
 @import './layout/header';
 

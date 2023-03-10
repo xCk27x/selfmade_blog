@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { jwtVerify } = require('../handlers/jwtVerify')
 
 const {
   createPost,
@@ -10,12 +11,12 @@ const {
 
 router.route('/')
   .get(getAllPosts)
-  .post(createPost);
+  .post(jwtVerify, createPost);
 
 router.route('/:userId')
   .get(getOneUserPosts);
 
 router.route('/:userId/:postId')
-  .delete(deletePost);
+  .delete(jwtVerify, deletePost);
 
 module.exports = router;
