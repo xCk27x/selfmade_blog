@@ -15,6 +15,7 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import store from "../store";
 
 export default {
   setup() {
@@ -33,6 +34,7 @@ export default {
         );
         console.log(response.data.token);
         localStorage.setItem("token", response.data.token);
+        store.commit("userLogin");
         // 登陸成功，導航到'/article'
         router.push("/show");
         alert("登入成功");

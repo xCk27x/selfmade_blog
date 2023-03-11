@@ -43,6 +43,7 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import store from "../store";
 
 export default {
   setup() {
@@ -69,6 +70,7 @@ export default {
         );
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
+        store.commit("userLogin");
         router.push("/show");
         alert("帳號註冊成功，將為您重新導向");
       } catch (error) {

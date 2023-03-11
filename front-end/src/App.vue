@@ -16,7 +16,7 @@
           <h2>新文章</h2>
         </div>
       </router-link>
-      <router-link v-if="!isLoggedIn" to="/authenticate">
+      <router-link v-if="!isLoggedin" to="/authenticate">
         <div class="nav__item">
           <h2>登入</h2>
         </div>
@@ -32,18 +32,23 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed } from "vue";
+import store from "./store";
+
+window.addEventListener("storage", (event) => {
+  if (event.key === "token") {
+    console.log(localStorage.getItem("token"));
+  }
+});
 
 export default {
   setup() {
-    const isLoggedIn = ref(false);
+    const isLoggedin = computed(() => store.state.isLoggedin);
 
-    if (localStorage.getItem("token")) {
-      isLoggedIn.value = true;
-    }
+    console.log(isLoggedin.value);
 
     return {
-      isLoggedIn,
+      isLoggedin,
     };
   },
 };

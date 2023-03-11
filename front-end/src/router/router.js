@@ -12,7 +12,6 @@ import ChangeName from "@/components/ChangeName.component.vue";
 import ChangeEmail from "@/components/ChangeEmail.component.vue";
 import ChangePassword from "@/components/ChangePassword.component.vue";
 
-
 // 定義路由
 const routes = [
   {

@@ -2,11 +2,7 @@
   <section class="section-show">
     <h2>這裡是所有的文章，歡迎查閱~</h2>
     <ul>
-      <single-post
-        :post="post"
-        v-for="post in posts"
-        :key="post.id"
-      ></single-post>
+      <single-post :post="post" v-for="post in posts" :key="post.id"></single-post>
     </ul>
   </section>
 </template>
@@ -16,6 +12,7 @@ import { reactive, onMounted } from "vue";
 import axios from "axios";
 
 import singlePost from "../components/FullPagePost.component.vue";
+
 
 export default {
   components: { "single-post": singlePost },

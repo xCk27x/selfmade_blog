@@ -45,6 +45,7 @@
           </span>
         </li>
       </ul>
+      <button @click="userLogout" class="profile-body__logout">登出帳號</button>
     </div>
   </div>
 </template>
@@ -53,6 +54,7 @@
 import axios from "axios";
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import store from "../store";
 
 export default {
   setup() {
@@ -79,8 +81,12 @@ export default {
         alert("無法獲取使用者資訊");
         router.push("/authenticate");
       }
+    };
 
-      axios.get()
+    const userLogout = () => {
+      localStorage.removeItem("token");
+      store.commit("userLogout");
+      router.push("/authenticate");
     };
 
     onMounted(() => {
@@ -91,6 +97,7 @@ export default {
       username,
       email,
       password,
+      userLogout,
     };
   },
 };
