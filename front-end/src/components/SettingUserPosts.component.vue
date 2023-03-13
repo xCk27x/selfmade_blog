@@ -1,20 +1,24 @@
 <template>
   <div class="userposts">
-    <div class="userposts-header"></div>
-    <div class="userposts-body"></div>
+    <short-post
+      v-for="post in posts"
+      :key="post.id"
+      :information="post"
+    ></short-post>
   </div>
 </template>
 
 <script>
-import ShortPost from './ShortPagePost.vue'
-import { ref } from 'vue';
+import ShortPost from "./ShortPagePost.vue";
+import { ref, onMounted } from "vue";
+import axios from "axios";
 
 export default {
   components: {
-    'short-post': ShortPost,
+    "short-post": ShortPost,
   },
   setup() {
-    const articles = ref([]);
+    const posts = ref([]);
 
     const getNPostRandom = async (num) => {
       try {
@@ -26,14 +30,20 @@ export default {
             },
           }
         );
-        console.log(response);
+        posts.value = response.data;
+        console.log(posts.value);
       } catch (err) {
         console.error(err);
       }
     };
+
+    onMounted(() => {
+      getNPostRandom(10);
+    });
+
     return {
-      articles,
+      posts,
     };
-  }
-} 
+  },
+};
 </script>

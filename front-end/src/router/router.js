@@ -6,6 +6,8 @@ import Authenticate from "@/views/Authenticate_page.vue";
 import Create from "@/views/Create_page.vue";
 import Show from "@/views/Show_page.vue";
 import Setting from "@/views/Setting_page.vue";
+import Full from "@/views/Full_page.vue";
+import AllContent from "@/components/FullPagePost.component.vue";
 import UserProfile from "@/components/SettingUserProfile.component.vue";
 import UserPosts from "@/components/SettingUserPosts.component.vue";
 import ChangeName from "@/components/ChangeName.component.vue";
@@ -33,6 +35,18 @@ const routes = [
     path: "/create",
     name: "createPost",
     component: Create,
+  },
+  {
+    path: "/full",
+    name: "FullPagePost",
+    component: Full,
+    children: [
+      {
+        path: ":id",
+        name: "AllContentById",
+        component: AllContent,
+      },
+    ]
   },
   {
     path: "/setting",
