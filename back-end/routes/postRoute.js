@@ -6,12 +6,16 @@ const {
   createPost,
   getAllPosts,
   getOneUserPosts,
+  getNPostRandomly,
   deletePost,
 } = require('../handlers/postHandlers');
 
 router.route('/')
   .get(getAllPosts)
   .post(jwtVerify, createPost);
+
+router.route('/random/:amount')
+  .get(getNPostRandomly);
 
 router.route('/:userId')
   .get(getOneUserPosts);

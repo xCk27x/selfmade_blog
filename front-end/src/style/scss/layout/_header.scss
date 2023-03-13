@@ -1,30 +1,27 @@
 header {
-  height: 6rem;
-  padding: 0 3rem;
+  overflow: hidden;
   background-image: linear-gradient(to right, $color_primary_light, $color_primary_dark);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & a {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 3rem;
+  z-index: 10;
+  box-shadow: inset 0 0 20px green;
+  
+  & a {    
+    padding: 1.4rem;
+    display: block;
+    text-align: center;
     text-decoration: none;
   }
-
+  
   & .website-name {
     color: $color-blue-dark;
-    font-size: 1.3rem;
+    font-size: 2.4rem;
+    font-weight: bolder;
   }
 }
 
-nav {
-  display: flex;
-  
-  & .nav__item {
-    margin-left: 2rem;
-    
-    & h2 {
-      color: $color-blue-dark;
-      font-size: 2rem;
-    }
-  }
+main {
+  padding: 6rem 0;
 }

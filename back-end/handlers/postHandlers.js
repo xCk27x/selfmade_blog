@@ -2,6 +2,10 @@ const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./ncufresh-homework.db');
 
+const getRandomNum = (max) => {
+  return Math.floor(Math.random() * (max));
+}
+
 exports.createPost = (req, res) => {
   const { title, content } = req.body;
 
@@ -27,7 +31,6 @@ exports.createPost = (req, res) => {
   });
 }
 
-
 exports.getAllPosts = (req, res) => {
   // 根據 id 由大到小排序，從 POSTS 資料表中取出所有文章
   db.all('SELECT * FROM POSTS ORDER BY id', [], (err, rows) => {
@@ -52,8 +55,6 @@ exports.getAllPosts = (req, res) => {
 };
 
 exports.getOneUserPosts = (req, res) => {
-  const token = req.headers.authorization;
-
   const { userId } = req.params;
 
   // 先確認傳入的 token 是否合法
@@ -85,6 +86,62 @@ exports.getOneUserPosts = (req, res) => {
       res.json({ posts });
     });
   });
+};
+
+exports.getNPostRandomly = async (req, res) => {
+  const wantAmount = req.params.amount;
+  const set = new Set();
+
+  try {
+    const rows = await new Promise((resolve, reject) => {
+      db.all("SELECT id FROM POSTS", [], (err, rows) => {
+        if (err || !rows) {
+          reject(err || new Error("No rows found"));
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+
+    while (set.size < wantAmount) {
+      set.add(rows[getRandomNum(rows.length)].id);
+    }
+
+    const promises = Array.from(set).map((postId) => {
+      return new Promise((resolve, reject) => {
+        db.get(
+          "SELECT * FROM POSTS WHERE id = ?",
+          [postId],
+          (err, row1) => {
+            if (err || !row1) {
+              reject(err || new Error("No post found"));
+            } else {
+              db.get(
+                "SELECT username FROM USERS where id = ?",
+                [row1.author_id],
+                (err, row2) => {
+                  if (err || !row2) {
+                    reject(err || new Error("No author found"));
+                  } else {
+                    resolve({
+                      ...row1,
+                      author_name: row2.username,
+                    });
+                  }
+                }
+              );
+            }
+          }
+        );
+      });
+    });
+
+    const posts = await Promise.all(promises);
+    res.status(200).send(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal server error");
+  }
 };
 
 exports.deletePost = (req, res) => {

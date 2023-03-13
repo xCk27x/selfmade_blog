@@ -1,34 +1,14 @@
 <template>
   <header>
-    <router-link to="/">
-      <div class="website-name">
-        <h1>Ck27 Blog</h1>
-      </div>
-    </router-link>
-    <nav>
-      <router-link to="/show">
-        <div class="nav__item">
-          <h2>文章總覽</h2>
-        </div>
-      </router-link>
-      <router-link to="/create">
-        <div class="nav__item">
-          <h2>新文章</h2>
-        </div>
-      </router-link>
-      <router-link v-if="!isLoggedin" to="/authenticate">
-        <div class="nav__item">
-          <h2>登入</h2>
-        </div>
-      </router-link>
-      <router-link v-else to="/setting">
-        <div class="nav__item">
-          <h2>使用者設定</h2>
-        </div>
-      </router-link>
-    </nav>
+    <router-link to="/" class="website-name float-left">Ck27 Blog</router-link>
+    <router-link v-if="!isLoggedin" to="/authenticate" class="website-name float-right">登入</router-link>
+    <router-link v-else to="/setting" class="website-name float-right">使用者設定</router-link>
+    <router-link to="/create" class="website-name float-right">新文章</router-link>
+    <router-link to="/show" class="website-name float-right">文章總覽</router-link>
   </header>
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <script>

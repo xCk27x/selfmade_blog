@@ -1,5 +1,6 @@
 @import './abstracts/mixins';
 @import './abstracts/variable';
+@import './abstracts/utils';
 
 @import './base/base';
 
@@ -9,6 +10,7 @@
 @import './components/homePage';
 @import './components/profile';
 @import './components/setting';
+@import './components/shortArticle';
 @import './components/signIn';
 @import './components/signUp';
 

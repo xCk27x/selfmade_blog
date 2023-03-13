@@ -13,9 +13,10 @@ import axios from "axios";
 
 import singlePost from "../components/FullPagePost.component.vue";
 
-
 export default {
-  components: { "single-post": singlePost },
+  components: {
+    "single-post": singlePost,
+  },
 
   setup() {
     const token = localStorage.getItem("token");
